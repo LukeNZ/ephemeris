@@ -1,0 +1,20 @@
+{
+  "name": "luke-nz/ephemeris",
+  "description": "An API for the Space-Track.org service, allowing you to retrieve data about satellites in orbit.",
+  "keywords": ["space-track", "ephemeris", "satellite", "orbit", "api"],
+  "homepage": "http://github.com/LukeNZ/ephemeris",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Luke Davia"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "autoload": {
+    "psr-4": {"LukeNZ\\Ephemeris\\": "src/"}
+  }
+}

@@ -46,7 +46,7 @@ class Ephemeris
     }
 
     private function authenticate() {
-        $response = $this->client->post(Ephemeris::SPACE_TRACK_URL . 'ajaxauth/login', [
+        $response = $this->client->post(Ephemeris::SPACE_TRACK_URL . '/ajaxauth/login', [
             'form_params' => [
                 'identity' => $this->identity,
                 'password' => $this->password

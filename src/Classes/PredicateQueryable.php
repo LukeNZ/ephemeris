@@ -6,6 +6,8 @@ class PredicateQueries
     public function satellite($satelliteIdentifiers) {
         if (is_array($satelliteIdentifiers)) {
 
+        } else {
+            
         }
     }
 }

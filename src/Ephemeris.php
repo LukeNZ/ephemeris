@@ -20,7 +20,11 @@ class Ephemeris
         $this->identity = $identity;
         $this->password = $password;
 
-        $this->client = new Client();
+        $this->client = new Client([
+            'cookies' => true
+        ]);
+
+        $this->authenticate();
     }
 
     public function tles() {
@@ -38,9 +42,7 @@ class Ephemeris
     }
 
     public function httpRequest($url) {
-        return $this->client->get(Ephemeris::SPACE_TRACK_URL . $url, [
-            'cookies' => $this->cookie
-        ]);
+        return $this->client->get(Ephemeris::SPACE_TRACK_URL . $url);
     }
 
     private function authenticate() {
@@ -50,9 +52,5 @@ class Ephemeris
                 'password' => $this->password
             ]
         ]);
-
-        $body = json_decode($response->getBody());
-
-        $this->cookie = new GuzzleHttp\Cookie\CookieJar();
     }
 }

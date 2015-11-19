@@ -37,8 +37,8 @@ class Ephemeris
         }
     }
 
-    public function httpRequest($method, $url) {
-        return $this->client->{$method}(Ephemeris::SPACE_TRACK_URL . $url, [
+    public function httpRequest($url) {
+        return $this->client->get(Ephemeris::SPACE_TRACK_URL . $url, [
             'cookies' => $this->cookie
         ]);
     }

@@ -1,7 +1,7 @@
 <?php
 namespace LukeNZ\Ephemeris\Classes;
 
-class TLE
+class TLE extends ClassQueryable
 {
     const CLASS_URL = '/basicspacedata/query/class/tle';
 

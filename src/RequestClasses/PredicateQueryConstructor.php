@@ -42,6 +42,6 @@ class PredicateQueryConstructor
 
     public function fetch() {
         $response = $this->client->httpRequest($this->buildQuery());
-        return json_decode($response->getBody);
+        return json_decode($response->getBody());
     }
 }

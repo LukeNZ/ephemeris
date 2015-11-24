@@ -28,7 +28,7 @@ class Ephemeris
     }
 
     public function tles() {
-        return new Classes\TLE($this);
+        return new RequestClasses\TLE($this);
     }
 
     public function disableApiAdherence() {

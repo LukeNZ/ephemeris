@@ -19,6 +19,8 @@ class PredicateQueryConstructor
         } else {
             $query['predicates'][$satelliteIdentifiers->getPredicateName()] = $satelliteIdentifiers->identify();
         }
+
+        return $this;
     }
 
     public function modelDefinitions() {

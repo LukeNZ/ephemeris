@@ -10,6 +10,11 @@ class TLE extends PredicateQueryConstructor implements RequestClassInterface
         parent::__construct($client, $this->requestControllerName(), $this->requestClassName());
     }
 
+    public function latest() {
+        $this->requestClass = "tle_latest";
+        return $this;
+    }
+
     public function deltaSince() {
 
     }

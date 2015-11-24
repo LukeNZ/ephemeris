@@ -7,7 +7,7 @@ class NoradID implements SatelliteIdentificationContract
     private $identifier;
 
     public function __construct($identifier) {
-        $this->identifier;
+        $this->identifier = $identifier;
     }
 
     public static function create($identifier) {

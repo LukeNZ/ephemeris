@@ -2,6 +2,7 @@
 namespace LukeNZ\Ephemeris;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\CookieJar;
 
 class Ephemeris
 {
@@ -20,10 +21,7 @@ class Ephemeris
         $this->identity = $identity;
         $this->password = $password;
 
-        $this->client = new Client([
-            'cookies' => true
-        ]);
-
+        $this->client = new Client();
         $this->authenticate();
     }
 
@@ -41,8 +39,16 @@ class Ephemeris
         }
     }
 
+    public function getResponseFormat() {
+        return $this->responseFormat;
+    }
+
     public function httpRequest($url) {
-        return $this->client->get(Ephemeris::SPACE_TRACK_URL . $url);
+        return $this->client->request('GET', Ephemeris::SPACE_TRACK_URL . $url, [
+            'headers' => [
+                'Cookie' => $this->cookie
+            ]
+        ]);
     }
 
     private function authenticate() {
@@ -52,5 +58,6 @@ class Ephemeris
                 'password' => $this->password
             ]
         ]);
+        $this->cookie = $response->getHeader('Set-Cookie')[1];
     }
 }

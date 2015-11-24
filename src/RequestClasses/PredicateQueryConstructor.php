@@ -17,9 +17,8 @@ class PredicateQueryConstructor
         if (is_array($satelliteIdentifiers)) {
 
         } else {
-            $query['predicates'][$satelliteIdentifiers->getPredicateName()] = $satelliteIdentifiers->identify();
+            $this->query['predicates'][$satelliteIdentifiers->getPredicateName()] = $satelliteIdentifiers->identify();
         }
-
         return $this;
     }
 
@@ -28,20 +27,21 @@ class PredicateQueryConstructor
     }
 
     protected function buildQuery() {
-        $query = $this->query['controller'] . '/' . $this->query['action'] . '/' . $this->query['class'] . '/class/';
+        $query = '/' . $this->query['controller'] . '/' . $this->query['action'] . '/class/' . $this->query['class'] . '/';
 
-        if (isset($query['predicates'])) {
-            foreach ($query['predicates'] as $key => $value) {
+        if (isset($this->query['predicates'])) {
+            foreach ($this->query['predicates'] as $key => $value) {
                 $query .= $key . '/' . $value . '/';
             }
         }
 
-        $query .= 'format/' . $this->client->responseFormat;
+        $query .= 'format/' . $this->client->getResponseFormat();
 
         return $query;
     }
 
     public function fetch() {
-        return $this->client->httpRequest($this->buildQuery());
+        $response = $this->client->httpRequest($this->buildQuery());
+        return json_decode($response);
     }
 }

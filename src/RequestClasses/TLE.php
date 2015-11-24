@@ -10,6 +10,10 @@ class TLE extends PredicateQueryConstructor implements RequestClassInterface
         parent::__construct($client, $this->requestControllerName(), $this->requestClassName());
     }
 
+    public function deltaSince() {
+
+    }
+
     public function requestClassName() {
         return $this->requestClass;
     }
